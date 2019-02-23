@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rschuppe <rschuppe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wballaba <wballaba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 18:34:13 by rschuppe          #+#    #+#             */
-/*   Updated: 2019/02/23 15:03:09 by rschuppe         ###   ########.fr       */
+/*   Updated: 2019/02/23 15:16:40 by wballaba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,6 @@ typedef struct	s_params
 t_mlx	*ft_create_window(int width, int height, char *title);
 void	ft_draw_circle(t_mlx *visualiser, t_params *data, int color);
 void	ft_draw_rectangle(t_mlx *visualiser, t_params *data, int color);
+void	ft_draw_line(t_mlx *visualiser, t_params *data, int color, int x2, int y2);
 
 #endif

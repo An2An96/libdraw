@@ -14,7 +14,8 @@ int main()
 	data.x = 50;
 	data.y = 50;
 	data.radius = 10;
-	ft_draw_circle(visualiser, &data, 0xFFFFFF);
+	// ft_draw_circle(visualiser, &data, 0xFFFFFF);
+	ft_draw_line(visualiser, &data, 0xFFFFFF, 100, 100);
 	mlx_loop(visualiser->mlx_ptr);
 	return (0);
 }

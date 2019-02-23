@@ -15,7 +15,7 @@ C_INCLUDE_PATH += $(LIBMLX_DIR)/includes
 #FLAGS = -Wall -Werror -Wextra
 FLAGS += $(foreach path,$(C_INCLUDE_PATH),-I$(path))
 
-SRCS_FILES = ft_create_window.c ft_draw_circle.c ft_draw_rectangle.c
+SRCS_FILES = ft_create_window.c ft_draw_circle.c ft_draw_line.c ft_draw_rectangle.c
 
 MLX_OBJS = $(LIBMLX_DIR)/*.o
 
