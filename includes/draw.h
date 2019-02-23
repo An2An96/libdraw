@@ -6,7 +6,7 @@
 /*   By: wballaba <wballaba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 18:34:13 by rschuppe          #+#    #+#             */
-/*   Updated: 2019/02/23 16:17:41 by wballaba         ###   ########.fr       */
+/*   Updated: 2019/02/23 18:39:29 by wballaba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,9 @@
 # include <math.h>
 # include "mlx.h"
 
-# define PI		3.14159265
+# define PI			3.14159265
+
+# define KEY_SPACE	49
 
 typedef struct	s_mlx
 {
