@@ -15,9 +15,10 @@ C_INCLUDE_PATH += $(LIBMLX_DIR)/includes
 #FLAGS = -Wall -Werror -Wextra
 FLAGS += $(foreach path,$(C_INCLUDE_PATH),-I$(path))
 
-SRCS_FILES = ft_create_window.c ft_draw_circle.c ft_draw_rectangle.c
+MLX_OBJS =	mlx_init_loop.o mlx_int_str_to_wordtab.o mlx_new_image.o \
+			mlx_new_window.o mlx_shaders.o mlx_xpm.o
 
-MLX_OBJS = $(LIBMLX_DIR)/*.o
+SRCS_FILES = ft_create_window.c ft_draw_circle.c ft_draw_rectangle.c
 
 # LIBFT_FUNCS =
 
@@ -46,12 +47,12 @@ $(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c
 
 $(NAME): $(OBJS)
 	echo "Building...\n"
-	ar rc $@ $^
+	ar rc $@ $^ $(addprefix $(LIBMLX_DIR)/, $(MLX_OBJS)) 
 	ranlib $@
 	echo "Build complete"
 
 test: all
-	gcc -I./includes -L. -ldraw -L$(LIBMLX_DIR) -lmlx -framework OpenGL -framework AppKit test.c
+	gcc -I./includes -L. -ldraw -framework OpenGL -framework AppKit test.c
 
 clean:
 	@echo "Object files cleared"
