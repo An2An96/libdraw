@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_draw_circle.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wballaba <wballaba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rschuppe <rschuppe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 18:33:17 by rschuppe          #+#    #+#             */
-/*   Updated: 2019/02/23 15:16:50 by wballaba         ###   ########.fr       */
+/*   Updated: 2019/02/23 19:56:25 by rschuppe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 void	ft_draw_circle(t_mlx *visualiser, t_params *data, int color)
 {
-	int		x;
-	int		y;
 	double	val;
 	double	angle;
 

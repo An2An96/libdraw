@@ -3,4 +3,6 @@ a.out.dSYM/
 .vscode/
 *.out
 
+**/*.o
+libmlx.a
 libdraw.a
