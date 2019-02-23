@@ -6,7 +6,7 @@ LIBMLX_DIR = ./libs/libmlx
 
 INC_DIR = ./includes
 SRCS_DIR = ./srcs
-OBJS_DIR = ./obj
+OBJS_DIR = ./objs
 
 C_INCLUDE_PATH += includes/
 C_INCLUDE_PATH += $(LIBFT_DIR)/includes
@@ -15,7 +15,7 @@ C_INCLUDE_PATH += $(LIBMLX_DIR)/includes
 #FLAGS = -Wall -Werror -Wextra
 FLAGS += $(foreach path,$(C_INCLUDE_PATH),-I$(path))
 
-SRCS_FILES = ft_create_window.c ft_draw_circle.c
+SRCS_FILES = ft_create_window.c ft_draw_circle.c ft_draw_rectangle.c
 
 MLX_OBJS = $(LIBMLX_DIR)/*.o
 
