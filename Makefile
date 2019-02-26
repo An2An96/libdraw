@@ -17,7 +17,7 @@ FLAGS += -Wall -Werror -Wextra
 FLAGS += -I includes/ -I $(LIBMLX_DIR)
 
 SRCS_FILES =	ft_create_window.c ft_draw_circle.c ft_draw_line.c \
-				ft_draw_rectangle.c
+				ft_draw_rectangle.c ft_draw_bg_gradient.c ft_create_image.c
 
 MLX_OBJS =		mlx_init_loop.o mlx_int_str_to_wordtab.o mlx_new_image.o \
 				mlx_new_window.o mlx_shaders.o mlx_xpm.o
@@ -41,7 +41,7 @@ $(LIBMLX):
 
 $(NAME): $(LIBMLX) $(OBJS)
 	@echo "$(YELLOW_COLOR)Building...$(NO_COLOR)"
-	@ar rc $@ $^ $(addprefix $(LIBMLX_DIR)/, $(MLX_OBJS)) 
+	@ar rc $@ $(OBJS) $(addprefix $(LIBMLX_DIR)/, $(MLX_OBJS)) 
 	@ranlib $@
 	@echo "$(OK_COLOR)Build complete$(NO_COLOR)"
 
