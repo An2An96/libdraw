@@ -6,7 +6,7 @@
 /*   By: wballaba <wballaba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 14:38:33 by wballaba          #+#    #+#             */
-/*   Updated: 2019/02/26 18:41:40 by wballaba         ###   ########.fr       */
+/*   Updated: 2019/02/26 18:50:47 by wballaba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,13 @@ void	ft_draw_bg_gradient(
 			delta.x = current.x - start.x;
 			delta.y = current.y - start.y;
 			current.color = get_color(current, start, end, delta);
-			mlx_pixel_put(visualiser->mlx_ptr, visualiser->win_ptr,
-				current.x, current.y, current.color);
+
+			if (data->img)
+				data->img->data[current.y * data->width + current.x] =
+					current.color;
+			else
+				mlx_pixel_put(visualiser->mlx_ptr, visualiser->win_ptr,
+					current.x, current.y, current.color);
 		}
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: wballaba <wballaba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 18:34:13 by rschuppe          #+#    #+#             */
-/*   Updated: 2019/02/26 18:46:20 by wballaba         ###   ########.fr       */
+/*   Updated: 2019/02/26 18:48:53 by wballaba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ typedef struct	s_params
 	int			height;
 	int			line_width;
 	int			color;
+	t_img		*img;
 }				t_params;
 
 t_mlx	*ft_create_window(int width, int height, char *title);
