@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wballaba <wballaba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rschuppe <rschuppe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 18:34:13 by rschuppe          #+#    #+#             */
-/*   Updated: 2019/02/23 18:39:29 by wballaba         ###   ########.fr       */
+/*   Updated: 2019/03/06 21:14:54 by rschuppe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # define PI			3.14159265
 
 # define KEY_SPACE	49
+# define KEY_ESC	53
 
 typedef struct	s_mlx
 {
