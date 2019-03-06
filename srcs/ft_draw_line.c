@@ -6,7 +6,7 @@
 /*   By: wballaba <wballaba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/23 14:21:21 by wballaba          #+#    #+#             */
-/*   Updated: 2019/02/23 18:11:17 by wballaba         ###   ########.fr       */
+/*   Updated: 2019/02/26 19:24:14 by wballaba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ static void	ft_draw_line_one_pix(t_mlx *visualiser, t_params *data, int color)
 	double	side[3];
 	double	sin_a;
 	double	cos_a;
+	int		pos[2];
 
 	side[1] = data->y2 - data->y;
 	side[2] = data->x2 - data->x;
@@ -27,11 +28,13 @@ static void	ft_draw_line_one_pix(t_mlx *visualiser, t_params *data, int color)
 	length = side[0];
 	while ((int)length > 0)
 	{
-		mlx_pixel_put(
-			visualiser->mlx_ptr, visualiser->win_ptr,
-			round(data->x + length * cos_a),
-			round(data->y + length * sin_a),
-			color);
+		pos[0] = round(data->x + length * cos_a);
+		pos[1] = round(data->y + length * sin_a);
+		if (data->img)
+			data->img->data[pos[1] * (data->img->size_l / 4) + pos[0]] = color;
+		else
+			mlx_pixel_put(visualiser->mlx_ptr, visualiser->win_ptr,
+				pos[0], pos[1], color);
 		length--;
 	}
 }
@@ -50,6 +53,7 @@ void		ft_draw_line(t_mlx *visualiser, t_params *data, int color)
 	sin_b = side[2] / side[0];
 	cos_b = side[1] / side[0];
 	offset = -(data->line_width / 2);
+	tmp.img = data->img;
 	while (offset < data->line_width / 2.0)
 	{
 		tmp.x = data->x + (offset) * cos_b;

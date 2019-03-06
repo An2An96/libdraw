@@ -6,7 +6,7 @@
 /*   By: rschuppe <rschuppe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 18:34:13 by rschuppe          #+#    #+#             */
-/*   Updated: 2019/03/06 21:14:54 by rschuppe         ###   ########.fr       */
+/*   Updated: 2019/03/06 21:15:45 by rschuppe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,15 @@ typedef struct	s_mlx
 	void		*win_ptr;
 }				t_mlx;
 
+typedef struct	s_img
+{
+	void		*img_ptr;
+	int			*data;
+	int			size_l;
+	int			bpp;
+	int			endian;
+}				t_img;
+
 typedef struct	s_params
 {
 	int			x;
@@ -39,19 +48,16 @@ typedef struct	s_params
 	int			width;
 	int			height;
 	int			line_width;
+	int			color;
+	t_img		*img;
 }				t_params;
-
-typedef struct	s_side
-{
-	double		a;
-	double		b;
-	double		c;
-}				t_side;
-
 
 t_mlx	*ft_create_window(int width, int height, char *title);
 void	ft_draw_circle(t_mlx *visualiser, t_params *data, int color);
 void	ft_draw_rectangle(t_mlx *visualiser, t_params *data, int color);
 void	ft_draw_line(t_mlx *visualiser, t_params *data, int color);
+void	ft_draw_bg_gradient(
+	t_mlx *visualiser, t_params *data, int start_color, int end_color);
+t_img	*ft_create_image(t_mlx *mlx, int width, int height);
 
 #endif
