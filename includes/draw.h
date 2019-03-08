@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rschuppe <rschuppe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wballaba <wballaba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 18:34:13 by rschuppe          #+#    #+#             */
-/*   Updated: 2019/03/06 21:15:45 by rschuppe         ###   ########.fr       */
+/*   Updated: 2019/03/08 19:30:26 by wballaba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,9 @@ typedef struct	s_params
 }				t_params;
 
 t_mlx	*ft_create_window(int width, int height, char *title);
-void	ft_draw_circle(t_mlx *visualiser, t_params *data, int color);
+void	ft_draw_circle(t_mlx *visualiser, t_params *data, int color, int win_size);
 void	ft_draw_rectangle(t_mlx *visualiser, t_params *data, int color);
-void	ft_draw_line(t_mlx *visualiser, t_params *data, int color);
+void		ft_draw_line(t_mlx *visualiser, t_params *data, int color, int win_size);
 void	ft_draw_bg_gradient(
 	t_mlx *visualiser, t_params *data, int start_color, int end_color);
 t_img	*ft_create_image(t_mlx *mlx, int width, int height);

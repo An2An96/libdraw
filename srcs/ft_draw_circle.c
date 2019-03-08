@@ -6,13 +6,13 @@
 /*   By: wballaba <wballaba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 18:33:17 by rschuppe          #+#    #+#             */
-/*   Updated: 2019/03/08 15:45:15 by wballaba         ###   ########.fr       */
+/*   Updated: 2019/03/08 19:28:56 by wballaba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "draw.h"
 
-void	ft_draw_circle(t_mlx *visualiser, t_params *data, int color)
+void	ft_draw_circle(t_mlx *visualiser, t_params *data, int color, int win_size)
 {
 	double	val;
 	double	angle;
@@ -28,12 +28,16 @@ void	ft_draw_circle(t_mlx *visualiser, t_params *data, int color)
 		{
 			pos[0] = data->x + round((data->radius + offst) * cos(angle * val));
 			pos[1] = data->y + round((data->radius + offst) * sin(angle * val));
-			if (data->img)
-				data->img->data[pos[1] * (data->img->size_l / 4) + pos[0]] =
-					color;
-			else
-				mlx_pixel_put(visualiser->mlx_ptr, visualiser->win_ptr,
+			if (pos[0] >= 0 && pos[0] < win_size && pos[1] >= 0 && pos[1] < win_size )
+			{
+				if (data->img)
+					data->img->data[pos[1] * (data->img->size_l / 4) + pos[0]] =
+						color;
+				else
+					mlx_pixel_put(visualiser->mlx_ptr, visualiser->win_ptr,
 					pos[0], pos[1], color);
+			}
+			
 			angle++;
 		}
 		offst++;
