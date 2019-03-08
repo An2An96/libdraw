@@ -6,7 +6,7 @@
 /*   By: wballaba <wballaba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 14:38:33 by wballaba          #+#    #+#             */
-/*   Updated: 2019/02/26 18:50:47 by wballaba         ###   ########.fr       */
+/*   Updated: 2019/03/08 15:54:59 by wballaba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,19 @@ int		get_color(
 	return ((red << 16) | (green << 8) | blue);
 }
 
+void	put_pxl_clr(t_mlx *visualiser, t_params *data, t_params *cur)
+{
+	if (data->img)
+		data->img->data[cur->y * data->width + cur->x] = cur->color;
+	else
+		mlx_pixel_put(visualiser->mlx_ptr, visualiser->win_ptr,
+			cur->x, cur->y, cur->color);
+}
+
 void	ft_draw_bg_gradient(
 	t_mlx *visualiser, t_params *data, int start_color, int end_color)
 {
-	t_params current;
+	t_params cur;
 	t_params start;
 	t_params end;
 	t_params delta;
@@ -63,23 +72,17 @@ void	ft_draw_bg_gradient(
 	end.x = data->width;
 	end.y = data->height;
 	end.color = end_color;
-	current.color = start.color;
-	current.y = -1;
-	while (++current.y < data->height)
+	cur.color = start.color;
+	cur.y = -1;
+	while (++cur.y < data->height)
 	{
-		current.x = -1;
-		while (++current.x < data->width)
+		cur.x = -1;
+		while (++cur.x < data->width)
 		{
-			delta.x = current.x - start.x;
-			delta.y = current.y - start.y;
-			current.color = get_color(current, start, end, delta);
-
-			if (data->img)
-				data->img->data[current.y * data->width + current.x] =
-					current.color;
-			else
-				mlx_pixel_put(visualiser->mlx_ptr, visualiser->win_ptr,
-					current.x, current.y, current.color);
+			delta.x = cur.x - start.x;
+			delta.y = cur.y - start.y;
+			cur.color = get_color(cur, start, end, delta);
+			put_pxl_clr(visualiser, data, &cur);
 		}
 	}
 }

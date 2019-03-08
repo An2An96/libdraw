@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_draw_circle.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rschuppe <rschuppe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wballaba <wballaba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 18:33:17 by rschuppe          #+#    #+#             */
-/*   Updated: 2019/03/08 15:41:03 by rschuppe         ###   ########.fr       */
+/*   Updated: 2019/03/08 15:45:15 by wballaba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,18 @@ void	ft_draw_circle(t_mlx *visualiser, t_params *data, int color)
 {
 	double	val;
 	double	angle;
-	double	offset;
+	double	offst;
 	int		pos[2];
 
 	val = PI / 180;
-	offset = -(data->line_width / 2);
-	while (offset < data->line_width / 2.0)
+	offst = -(data->line_width / 2);
+	while (offst < data->line_width / 2.0)
 	{
 		angle = 0;
 		while (angle < 360)
 		{
-			pos[0] =
-				data->x + round((data->radius + offset) * cos(angle * val));
-			pos[1] =
-				data->y + round((data->radius + offset) * sin(angle * val));
+			pos[0] = data->x + round((data->radius + offst) * cos(angle * val));
+			pos[1] = data->y + round((data->radius + offst) * sin(angle * val));
 			if (data->img)
 				data->img->data[pos[1] * (data->img->size_l / 4) + pos[0]] =
 					color;
@@ -38,7 +36,7 @@ void	ft_draw_circle(t_mlx *visualiser, t_params *data, int color)
 					pos[0], pos[1], color);
 			angle++;
 		}
-		offset++;
+		offst++;
 	}
 	return ;
 }
