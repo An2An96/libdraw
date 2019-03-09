@@ -6,13 +6,24 @@
 /*   By: wballaba <wballaba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/23 14:21:21 by wballaba          #+#    #+#             */
-/*   Updated: 2019/03/08 19:30:41 by wballaba         ###   ########.fr       */
+/*   Updated: 2019/03/09 16:10:25 by wballaba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "draw.h"
 
-static void	ft_draw_line_one_pix(t_mlx *visualiser, t_params *data, int color, int win_size)
+static void	draw_one_pix_line(t_mlx *visualiser, t_params *data,
+	int color, int *pos)
+{
+	if (data->img)
+		data->img->data[pos[1] * (data->img->size_l / 4) + pos[0]] = color;
+	else
+		mlx_pixel_put(visualiser->mlx_ptr, visualiser->win_ptr,
+			pos[0], pos[1], color);
+}
+
+static void	ft_draw_line_one_pix(t_mlx *visualiser, t_params *data, int color,
+	int win_size)
 {
 	double	length;
 	double	side[3];
@@ -30,19 +41,15 @@ static void	ft_draw_line_one_pix(t_mlx *visualiser, t_params *data, int color, i
 	{
 		pos[0] = round(data->x + length * cos_a);
 		pos[1] = round(data->y + length * sin_a);
-		if (pos[0] >= 0 && pos[0] < win_size && pos[1] >= 0 && pos[1] < win_size )
-		{
-			if (data->img)
-				data->img->data[pos[1] * (data->img->size_l / 4) + pos[0]] = color;
-			else
-				mlx_pixel_put(visualiser->mlx_ptr, visualiser->win_ptr,
-					pos[0], pos[1], color);
-		}
+		if (pos[0] >= 0 && pos[0] < win_size &&
+			pos[1] >= 0 && pos[1] < win_size)
+			draw_one_pix_circle(visualiser, data, color, pos);
 		length--;
 	}
 }
 
-void		ft_draw_line(t_mlx *visualiser, t_params *data, int color, int win_size)
+void		ft_draw_line(t_mlx *visualiser, t_params *data, int color,
+	int win_size)
 {
 	t_params	tmp;
 	double		offset;
